@@ -91,9 +91,20 @@ io.on("connection", (socket) => {
 
     }
 
-    if(connectedUsers[0].socketId == null || connectedUsers[0].socketId == "undefined") {
-      connectedUsers.splice(0, 1);
-    }
+
+    connectedUsers.forEach(function(element, index) {
+        if(element.socketId == null || element.socketId == "undefined") {
+        connectedUsers.splice(index, 1);
+      }
+    });
+
+    // connectedUsers.forEach(element => {
+    //   if(element.socketId == null || element.socketId == "undefined") {
+    //     connectedUsers.splice(0, 1);
+    //   }
+    // });
+
+    
 
     // console.log("my data is : " + displayName, email, photoURL);
     if (data.singedInUser.displayName) {
