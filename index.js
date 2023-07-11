@@ -46,6 +46,7 @@ io.on("connection", (socket) => {
     // first we wil check if the user is already registered or not
     // if the user is already registered then we will not add it to the connected users array
 
+
     const { displayName, email, photoURL } = data.singedInUser;
     console.log("is user already registered :");
 
@@ -90,6 +91,9 @@ io.on("connection", (socket) => {
 
     }
 
+    if(connectedUsers[0].socketId == null || connectedUsers[0].socketId == "undefined") {
+      connectedUsers.splice(0, 1);
+    }
 
     // console.log("my data is : " + displayName, email, photoURL);
     if (data.singedInUser.displayName) {
